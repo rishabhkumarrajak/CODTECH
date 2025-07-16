@@ -5,19 +5,16 @@
 #include <map>
 using namespace std;
 
-// Check if character is an operator
 bool isOperator(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
-// Set precedence of operators
 int precedence(char op) {
     if (op == '+' || op == '-') return 1;
     if (op == '*' || op == '/') return 2;
     return 0;
 }
 
-// Convert infix expression to postfix
 string infixToPostfix(const string& infix) {
     stack<char> opStack;
     string postfix;
@@ -60,7 +57,6 @@ string infixToPostfix(const string& infix) {
     return postfix;
 }
 
-// Evaluate postfix expression
 double evaluatePostfix(const string& postfix) {
     stack<double> valStack;
     istringstream tokens(postfix);
