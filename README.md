@@ -9,7 +9,7 @@
 - View Code:-https://github.com/rishabhkumarrajak/CODTECH/blob/main/management.cpp
 # Task 2: MULTITHREADED FILE COMPRESSION TOOL
 - A simple calculator that performs addition, subtraction, multiplication, and division.
-- View Code
+- View Code:-https://github.com/rishabhkumarrajak/CODTECH/blob/main/compress.cpp
 # Task 3: GAMEDEVELOPMENT: SNAKE GAME
 - A To do list app to add, view, and delete tasks.
 - View Code
