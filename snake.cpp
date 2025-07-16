@@ -78,7 +78,6 @@ public:
     }
 
     void update() {
-        // Move snake
         SnakeSegment head = snake.front();
         switch (dir) {
             case Left: head.x--; break;
@@ -87,8 +86,6 @@ public:
             case Down: head.y++; break;
             default: break;
         }
-
-        // Collision checks
         if (head.x < 0 || head.x >= WIDTH / BLOCK_SIZE || head.y < 0 || head.y >= HEIGHT / BLOCK_SIZE)
             return gameOver();
 
@@ -98,11 +95,10 @@ public:
 
         snake.insert(snake.begin(), head);
 
-        // Eat food
         if (head.x == food.x && head.y == food.y) {
             eatSound.play();
             score += 10;
-            speed *= 0.95f; // Increase difficulty
+            speed *= 0.95f;
             spawnFood();
         } else {
             snake.pop_back();
@@ -112,7 +108,7 @@ public:
     void draw() {
         window.clear();
 
-        // Draw snake
+     
         sf::RectangleShape block(sf::Vector2f(BLOCK_SIZE - 1, BLOCK_SIZE - 1));
         block.setFillColor(sf::Color::Green);
         for (auto s : snake) {
@@ -120,12 +116,12 @@ public:
             window.draw(block);
         }
 
-        // Draw food
+      
         block.setFillColor(sf::Color::Red);
         block.setPosition(food.x * BLOCK_SIZE, food.y * BLOCK_SIZE);
         window.draw(block);
 
-        // Draw score
+        
         scoreText.setString("Score: " + std::to_string(score));
         scoreText.setPosition(10, 10);
         window.draw(scoreText);
