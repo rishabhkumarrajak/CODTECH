@@ -6,7 +6,7 @@
 using namespace std;
 using namespace chrono;
 
-// Run-Length Encoding for a string segment
+
 string RLECompress(const string& data) {
     string result;
     for (size_t i = 0; i < data.size(); i++) {
@@ -20,7 +20,6 @@ string RLECompress(const string& data) {
     return result;
 }
 
-// Decompress RLE data
 string RLEDecompress(const string& data) {
     string result;
     for (size_t i = 0; i < data.size();) {
@@ -34,7 +33,6 @@ string RLEDecompress(const string& data) {
     return result;
 }
 
-// Multithreaded compression
 void threadedCompress(const string& data, string& output, int start, int end) {
     string partial = RLECompress(data.substr(start, end - start));
     output = partial;
@@ -55,14 +53,12 @@ void compressFileMultiThreaded(const string& inputFile, const string& compressed
 
     auto start_time = high_resolution_clock::now();
 
-    // Launch threads
     thread t1(threadedCompress, cref(content), ref(part1), 0, mid);
     thread t2(threadedCompress, cref(content), ref(part2), mid, content.size());
 
     t1.join();
     t2.join();
 
-    // Combine and save output
     ofstream out(compressedFile);
     out << part1 + part2;
     out.close();
@@ -114,7 +110,7 @@ void decompressFile(const string& compressedFile, const string& outputFile) {
 }
 
 int main() {
-    // Create a test file
+   
     ofstream test("original.txt");
     for (int i = 0; i < 10000; ++i) {
         test << "aaaaabbbbccccddddddeeeeffffgggghhhhiiiiijjjjj";
